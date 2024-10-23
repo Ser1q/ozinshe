@@ -7,38 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA95EE2A2CC7D5AE0006DB3B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA95EE292CC7D5AE0006DB3B /* SnapKit */; };
 		BA9F122E2CC1785200BEF090 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = BA9F122D2CC1785200BEF090 /* SwiftyJSON */; };
 		BA9F12312CC1791000BEF090 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = BA9F12302CC1791000BEF090 /* SDWebImage */; };
 		BA9F12332CC1791000BEF090 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA9F12322CC1791000BEF090 /* SDWebImageMapKit */; };
 		BA9F12362CC1796A00BEF090 /* Localize_Swift in Frameworks */ = {isa = PBXBuildFile; productRef = BA9F12352CC1796A00BEF090 /* Localize_Swift */; };
 		BA9F12392CC179CE00BEF090 /* SVProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = BA9F12382CC179CE00BEF090 /* SVProgressHUD */; };
 		BA9F123C2CC17C4800BEF090 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = BA9F123B2CC17C4800BEF090 /* Alamofire */; };
+		BAAB90402CC988B300E9535F /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BAAB90322CC988B300E9535F /* SF-Pro-Display-Bold.otf */; };
+		BAAB90412CC988B300E9535F /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = BAAB90332CC988B300E9535F /* SF-Pro-Display-Medium.otf */; };
+		BAAB90422CC988B300E9535F /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = BAAB90342CC988B300E9535F /* SF-Pro-Display-Regular.otf */; };
+		BAAB90432CC988B300E9535F /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BAAB90352CC988B300E9535F /* SF-Pro-Display-Semibold.otf */; };
+		BAAB90442CC988B300E9535F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAAB903A2CC988B300E9535F /* Assets.xcassets */; };
+		BAAB90452CC988B300E9535F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BAAB903B2CC988B300E9535F /* Info.plist */; };
+		BAAB90462CC988B300E9535F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAAB903D2CC988B300E9535F /* LaunchScreen.storyboard */; };
+		BAAB90472CC988B300E9535F /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB902F2CC988B300E9535F /* OnBoardingViewController.swift */; };
+		BAAB90482CC988B300E9535F /* SlidesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB90302CC988B300E9535F /* SlidesCollectionViewCell.swift */; };
+		BAAB90492CC988B300E9535F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB90392CC988B300E9535F /* AppDelegate.swift */; };
+		BAAB904A2CC988B300E9535F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB903E2CC988B300E9535F /* SceneDelegate.swift */; };
+		BAAB904D2CC988F400E9535F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB904C2CC988F400E9535F /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BA9F120C2CC1748700BEF090 /* ozinshe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ozinshe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAAB902F2CC988B300E9535F /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		BAAB90302CC988B300E9535F /* SlidesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidesCollectionViewCell.swift; sourceTree = "<group>"; };
+		BAAB90322CC988B300E9535F /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		BAAB90332CC988B300E9535F /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
+		BAAB90342CC988B300E9535F /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		BAAB90352CC988B300E9535F /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
+		BAAB90392CC988B300E9535F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BAAB903A2CC988B300E9535F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BAAB903B2CC988B300E9535F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAAB903C2CC988B300E9535F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BAAB903E2CC988B300E9535F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BAAB904C2CC988F400E9535F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		BA9F121E2CC1748800BEF090 /* Exceptions for "ozinshe" folder in "ozinshe" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = BA9F120B2CC1748700BEF090 /* ozinshe */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		BA9F120E2CC1748700BEF090 /* ozinshe */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				BA9F121E2CC1748800BEF090 /* Exceptions for "ozinshe" folder in "ozinshe" target */,
-			);
-			path = ozinshe;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BA9F12092CC1748700BEF090 /* Frameworks */ = {
@@ -48,6 +52,7 @@
 				BA9F12332CC1791000BEF090 /* SDWebImageMapKit in Frameworks */,
 				BA9F122E2CC1785200BEF090 /* SwiftyJSON in Frameworks */,
 				BA9F12392CC179CE00BEF090 /* SVProgressHUD in Frameworks */,
+				BA95EE2A2CC7D5AE0006DB3B /* SnapKit in Frameworks */,
 				BA9F123C2CC17C4800BEF090 /* Alamofire in Frameworks */,
 				BA9F12362CC1796A00BEF090 /* Localize_Swift in Frameworks */,
 				BA9F12312CC1791000BEF090 /* SDWebImage in Frameworks */,
@@ -60,7 +65,7 @@
 		BA9F12032CC1748700BEF090 = {
 			isa = PBXGroup;
 			children = (
-				BA9F120E2CC1748700BEF090 /* ozinshe */,
+				BAAB903F2CC988B300E9535F /* ozinshe */,
 				BA9F120D2CC1748700BEF090 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,6 +76,65 @@
 				BA9F120C2CC1748700BEF090 /* ozinshe.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BAAB90312CC988B300E9535F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BAAB904B2CC988C800E9535F /* OnBoarding */,
+				BAAB904C2CC988F400E9535F /* SignInViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BAAB90362CC988B300E9535F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BAAB90322CC988B300E9535F /* SF-Pro-Display-Bold.otf */,
+				BAAB90332CC988B300E9535F /* SF-Pro-Display-Medium.otf */,
+				BAAB90342CC988B300E9535F /* SF-Pro-Display-Regular.otf */,
+				BAAB90352CC988B300E9535F /* SF-Pro-Display-Semibold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BAAB90372CC988B300E9535F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BAAB90382CC988B300E9535F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BAAB903F2CC988B300E9535F /* ozinshe */ = {
+			isa = PBXGroup;
+			children = (
+				BAAB90312CC988B300E9535F /* Controllers */,
+				BAAB90362CC988B300E9535F /* Fonts */,
+				BAAB90372CC988B300E9535F /* Model */,
+				BAAB90382CC988B300E9535F /* ViewModel */,
+				BAAB90392CC988B300E9535F /* AppDelegate.swift */,
+				BAAB903A2CC988B300E9535F /* Assets.xcassets */,
+				BAAB903B2CC988B300E9535F /* Info.plist */,
+				BAAB903D2CC988B300E9535F /* LaunchScreen.storyboard */,
+				BAAB903E2CC988B300E9535F /* SceneDelegate.swift */,
+			);
+			path = ozinshe;
+			sourceTree = "<group>";
+		};
+		BAAB904B2CC988C800E9535F /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				BAAB902F2CC988B300E9535F /* OnBoardingViewController.swift */,
+				BAAB90302CC988B300E9535F /* SlidesCollectionViewCell.swift */,
+			);
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -88,9 +152,6 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				BA9F120E2CC1748700BEF090 /* ozinshe */,
-			);
 			name = ozinshe;
 			packageProductDependencies = (
 				BA9F122D2CC1785200BEF090 /* SwiftyJSON */,
@@ -99,6 +160,7 @@
 				BA9F12352CC1796A00BEF090 /* Localize_Swift */,
 				BA9F12382CC179CE00BEF090 /* SVProgressHUD */,
 				BA9F123B2CC17C4800BEF090 /* Alamofire */,
+				BA95EE292CC7D5AE0006DB3B /* SnapKit */,
 			);
 			productName = ozinshe;
 			productReference = BA9F120C2CC1748700BEF090 /* ozinshe.app */;
@@ -134,6 +196,7 @@
 				BA9F12342CC1796A00BEF090 /* XCRemoteSwiftPackageReference "Localize-Swift" */,
 				BA9F12372CC179CE00BEF090 /* XCRemoteSwiftPackageReference "SVProgressHUD" */,
 				BA9F123A2CC17C4800BEF090 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				BA95EE282CC7D5AE0006DB3B /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BA9F120D2CC1748700BEF090 /* Products */;
@@ -150,6 +213,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAAB90402CC988B300E9535F /* SF-Pro-Display-Bold.otf in Resources */,
+				BAAB90412CC988B300E9535F /* SF-Pro-Display-Medium.otf in Resources */,
+				BAAB90422CC988B300E9535F /* SF-Pro-Display-Regular.otf in Resources */,
+				BAAB90432CC988B300E9535F /* SF-Pro-Display-Semibold.otf in Resources */,
+				BAAB90442CC988B300E9535F /* Assets.xcassets in Resources */,
+				BAAB90452CC988B300E9535F /* Info.plist in Resources */,
+				BAAB90462CC988B300E9535F /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,10 +230,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAAB90472CC988B300E9535F /* OnBoardingViewController.swift in Sources */,
+				BAAB90482CC988B300E9535F /* SlidesCollectionViewCell.swift in Sources */,
+				BAAB90492CC988B300E9535F /* AppDelegate.swift in Sources */,
+				BAAB904D2CC988F400E9535F /* SignInViewController.swift in Sources */,
+				BAAB904A2CC988B300E9535F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BAAB903D2CC988B300E9535F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BAAB903C2CC988B300E9535F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BA9F12202CC1748800BEF090 /* Debug */ = {
@@ -178,7 +264,7 @@
 				INFOPLIST_FILE = ozinshe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -206,7 +292,7 @@
 				INFOPLIST_FILE = ozinshe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -365,6 +451,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BA95EE282CC7D5AE0006DB3B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 		BA9F122C2CC1785200BEF090 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
@@ -408,6 +502,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BA95EE292CC7D5AE0006DB3B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA95EE282CC7D5AE0006DB3B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		BA9F122D2CC1785200BEF090 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BA9F122C2CC1785200BEF090 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
