@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +63,19 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    private var currentPage = 0 {
+        didSet{
+            pageControl.currentPage = currentPage
+        }
+    }
     
     private var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
