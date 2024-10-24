@@ -117,7 +117,7 @@ class SlidesCollectionViewCell: UICollectionViewCell {
         //skipButton
         contentView.addSubview(skipButton)
         skipButton.snp.makeConstraints { make in
-            make.trailing.top.equalTo(contentView.safeAreaLayoutGuide).inset(20)
+            make.trailing.top.equalTo(contentView.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(24)
             make.width.greaterThanOrEqualTo(70)
         }
@@ -125,7 +125,7 @@ class SlidesCollectionViewCell: UICollectionViewCell {
         //nextButton
         contentView.addSubview(nextButton)
         nextButton.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).inset(dynamicValue(for: -104))
+            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(dynamicValue(for: 38))
             make.leading.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(dynamicValue(for: 24))
             
             make.height.equalTo(dynamicValue(for: 56))

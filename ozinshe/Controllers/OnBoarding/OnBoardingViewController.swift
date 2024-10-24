@@ -75,8 +75,14 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
     
     private var currentPage = 0 {
         didSet{
+            updatePageControlUI(currentPageIndex: currentPage)
             pageControl.currentPage = currentPage
         }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let width = scrollView.frame.width
+        currentPage = Int(scrollView.contentOffset.x / width)
     }
     
     private var pageControl: UIPageControl = {
@@ -88,10 +94,21 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
         pageControl.currentPage = 0
         pageControl.numberOfPages = 3
         
-        pageControl.setCurrentPageIndicatorImage(.pageRectangle, forPage: pageControl.currentPage)
+        pageControl.setIndicatorImage(.pageRectangle, forPage: pageControl.currentPage)
         
         return pageControl
     }()
+    
+    func updatePageControlUI(currentPageIndex: Int) {
+        
+        (0..<pageControl.numberOfPages).forEach { (index) in
+            let activePageIconImage = UIImage(resource: .pageRectangle)
+            let otherPageIconImage = UIImage(resource: .dot)
+            let pageIcon = index == currentPageIndex ? activePageIconImage : otherPageIconImage
+            pageControl.setIndicatorImage(pageIcon, forPage: index)
+        }
+        
+    }
     
     private func initialize(){
         view.backgroundColor = .BG
@@ -121,6 +138,11 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
         
         collectionView.showsHorizontalScrollIndicator = false
         
+        view.addSubview(pageControl)
+        pageControl.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(dynamicValue(for: 118))
+        }
     }
     
     @objc func goToSingIn(){
@@ -129,4 +151,15 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     
+}
+
+//MARK: - Private extensions
+private extension OnBoardingViewController{
+    func dynamicValue(for size: CGFloat) -> CGFloat {
+        let screenSize = UIScreen.main.bounds.size
+        let baseScreenSize = CGSize(width: 375, height: 812)
+        let scaleFactor = min(screenSize.width, screenSize.height) / min(baseScreenSize.width, baseScreenSize.height)
+        
+        return size * scaleFactor
+    }
 }

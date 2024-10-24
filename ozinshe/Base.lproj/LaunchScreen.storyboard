@@ -21,6 +21,9 @@
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Union" translatesAutoresizingMaskIntoConstraints="NO" id="7uL-GP-QNM">
                                 <rect key="frame" x="139.66666666666666" y="395" width="114" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="GYc-Ta-NDj"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
