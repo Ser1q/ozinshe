@@ -9,16 +9,17 @@ import UIKit
 import SnapKit
 
 class SlidesCollectionViewCell: UICollectionViewCell {
+    
+    override init(frame: CGRect){
+        super.init(frame: frame)
+        initialize()
+    }
+    
     //configure func
     func configure(image: UIImage, titleText: String, descriptionText: String){
         imageView.image = image
         titleLabel.text = titleText
         descriptionLabel.text = descriptionText
-    }
-    
-    override init(frame: CGRect){
-        super.init(frame: frame)
-        initialize()
     }
     
     required init?(coder: NSCoder) {
@@ -92,7 +93,7 @@ class SlidesCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(imageView)
         imageView.contentMode = .scaleAspectFill
         imageView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
+            make.leading.trailing.top.equalTo(contentView)
             make.height.equalTo(dynamicValue(for: 504))
         }
         
@@ -116,7 +117,7 @@ class SlidesCollectionViewCell: UICollectionViewCell {
         //skipButton
         contentView.addSubview(skipButton)
         skipButton.snp.makeConstraints { make in
-            make.trailing.top.equalTo(contentView.safeAreaLayoutGuide).inset(24)
+            make.trailing.top.equalTo(contentView.safeAreaLayoutGuide).inset(20)
             make.height.equalTo(24)
             make.width.greaterThanOrEqualTo(70)
         }

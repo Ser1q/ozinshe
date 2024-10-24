@@ -71,6 +71,8 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
+    
+    
     private var currentPage = 0 {
         didSet{
             pageControl.currentPage = currentPage
@@ -103,6 +105,8 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         
+        collectionView.contentInsetAdjustmentBehavior = .never
+
         view.addSubview(collectionView)
         collectionView.isPagingEnabled = true
         collectionView.snp.makeConstraints { make in
