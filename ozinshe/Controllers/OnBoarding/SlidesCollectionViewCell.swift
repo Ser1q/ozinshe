@@ -101,7 +101,7 @@ class SlidesCollectionViewCell: UICollectionViewCell {
         titleLabel.textAlignment = .center
         titleLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(dynamicValue(for: 310))
+            make.top.equalTo(contentView.safeAreaLayoutGuide).inset(dynamicValue(for: 419))
         }
         
         //desciptionLabel
@@ -109,14 +109,14 @@ class SlidesCollectionViewCell: UICollectionViewCell {
         descriptionLabel.textAlignment = .center
         descriptionLabel.numberOfLines = 4
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).inset(dynamicValue(for:24))
+            make.top.equalTo(titleLabel.snp.bottom).inset(dynamicValue(for:-24))
             make.leading.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(dynamicValue(for: 32))
         }
         
         //skipButton
         contentView.addSubview(skipButton)
         skipButton.snp.makeConstraints { make in
-            make.trailing.top.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            make.trailing.top.equalTo(contentView.safeAreaLayoutGuide).inset(24)
             make.height.equalTo(24)
             make.width.greaterThanOrEqualTo(70)
         }
@@ -124,7 +124,7 @@ class SlidesCollectionViewCell: UICollectionViewCell {
         //nextButton
         contentView.addSubview(nextButton)
         nextButton.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).inset(dynamicValue(for: 104))
+            make.top.equalTo(descriptionLabel.snp.bottom).inset(dynamicValue(for: -104))
             make.leading.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(dynamicValue(for: 24))
             
             make.height.equalTo(dynamicValue(for: 56))

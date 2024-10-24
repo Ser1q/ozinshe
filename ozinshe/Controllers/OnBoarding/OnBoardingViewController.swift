@@ -112,6 +112,9 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
         
         collectionView.register(SlidesCollectionViewCell.self, forCellWithReuseIdentifier: "slidesCell")
         
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
         collectionView.showsHorizontalScrollIndicator = false
         
     }

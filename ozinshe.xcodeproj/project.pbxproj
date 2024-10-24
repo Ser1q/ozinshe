@@ -19,7 +19,6 @@
 		BAAB90422CC988B300E9535F /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = BAAB90342CC988B300E9535F /* SF-Pro-Display-Regular.otf */; };
 		BAAB90432CC988B300E9535F /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = BAAB90352CC988B300E9535F /* SF-Pro-Display-Semibold.otf */; };
 		BAAB90442CC988B300E9535F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAAB903A2CC988B300E9535F /* Assets.xcassets */; };
-		BAAB90452CC988B300E9535F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BAAB903B2CC988B300E9535F /* Info.plist */; };
 		BAAB90462CC988B300E9535F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAAB903D2CC988B300E9535F /* LaunchScreen.storyboard */; };
 		BAAB90472CC988B300E9535F /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB902F2CC988B300E9535F /* OnBoardingViewController.swift */; };
 		BAAB90482CC988B300E9535F /* SlidesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAB90302CC988B300E9535F /* SlidesCollectionViewCell.swift */; };
@@ -218,7 +217,6 @@
 				BAAB90422CC988B300E9535F /* SF-Pro-Display-Regular.otf in Resources */,
 				BAAB90432CC988B300E9535F /* SF-Pro-Display-Semibold.otf in Resources */,
 				BAAB90442CC988B300E9535F /* Assets.xcassets in Resources */,
-				BAAB90452CC988B300E9535F /* Info.plist in Resources */,
 				BAAB90462CC988B300E9535F /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
