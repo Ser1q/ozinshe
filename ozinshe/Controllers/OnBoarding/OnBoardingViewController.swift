@@ -8,6 +8,21 @@
 import UIKit
 
 class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    //MARK: - Private properties
+    private var collectionView: UICollectionView!
+    
+    private let slidesArray: [[String]] = [
+        ["firstSlide", "ÖZINŞE-ге қош келдің!", "Фильмдер, телехикаялар, ситкомдар,\n анимациялық жобалар, телебағдарламалар\n мен реалити-шоулар, аниме және тағы\n басқалары"],
+        ["secondSlide", "ÖZINŞE-ге қош келдің!", "Кез келген құрылғыдан қара\n          Сүйікті фильміңді  қосымша төлемсіз\n телефоннан, планшеттен, ноутбуктан қара"],
+        ["thirdSlide", "ÖZINŞE-ге қош келдің!", "Тіркелу оңай. Қазір тіркел де қалаған\n фильміңе қол жеткіз"]
+    ]
+    
+    private var currentPage = 0 {
+        didSet{
+            updatePageControlUI(currentPageIndex: currentPage)
+            pageControl.currentPage = currentPage
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,16 +40,10 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    //MARK: - Private properties
-    private let slidesArray: [[String]] = [
-        ["firstSlide", "ÖZINŞE-ге қош келдің!", "Фильмдер, телехикаялар, ситкомдар,\n анимациялық жобалар, телебағдарламалар\n мен реалити-шоулар, аниме және тағы\n басқалары"],
-        ["secondSlide", "ÖZINŞE-ге қош келдің!", "Кез келген құрылғыдан қара\n          Сүйікті фильміңді  қосымша төлемсіз\n телефоннан, планшеттен, ноутбуктан қара"],
-        ["thirdSlide", "ÖZINŞE-ге қош келдің!", "Тіркелу оңай. Қазір тіркел де қалаған\n фильміңе қол жеткіз"]
-    ]
+   
+    
     
     //CollectionView
-    private var collectionView: UICollectionView!
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return slidesArray.count
     }
@@ -72,14 +81,6 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     
-    
-    private var currentPage = 0 {
-        didSet{
-            updatePageControlUI(currentPageIndex: currentPage)
-            pageControl.currentPage = currentPage
-        }
-    }
-    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let width = scrollView.frame.width
         currentPage = Int(scrollView.contentOffset.x / width)
@@ -100,19 +101,22 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
     }()
     
     func updatePageControlUI(currentPageIndex: Int) {
-        
-        (0..<pageControl.numberOfPages).forEach { (index) in
-            let activePageIconImage = UIImage(resource: .pageRectangle)
-            let otherPageIconImage = UIImage(resource: .dot)
-            let pageIcon = index == currentPageIndex ? activePageIconImage : otherPageIconImage
-            pageControl.setIndicatorImage(pageIcon, forPage: index)
+        UIView.animate(withDuration: 0.2) {
+            (0..<self.pageControl.numberOfPages).forEach { (index) in
+                let activePageIconImage = UIImage(resource: .pageRectangle)
+                let otherPageIconImage = UIImage(resource: .dot)
+                let pageIcon = index == currentPageIndex ? activePageIconImage : otherPageIconImage
+                
+                //animation
+                UIView.transition(with: self.pageControl, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                    self.pageControl.setIndicatorImage(pageIcon, forPage: index)
+                }, completion: nil)
+            }
         }
-        
     }
     
     private func initialize(){
         view.backgroundColor = .BG
-        
         //CollectionView
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.minimumInteritemSpacing = 0
