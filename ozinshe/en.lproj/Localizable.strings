@@ -5,5 +5,10 @@
   Created by Nuradil Serik on 30.10.2024.
   
 */
+"HELLO" = "Hello";
 
-"HELLO" = "Сәлем";
+"WRONG_FORMAT" = "Wrong format";
+"NO_ACC" = "No account?";
+"REGISTER" = "Register";
+
+

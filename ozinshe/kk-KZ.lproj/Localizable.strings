@@ -5,5 +5,8 @@
   Created by Nuradil Serik on 30.10.2024.
   
 */
+"HELLO" = "Сәлем";
 
-"HELLO" = "Hello";
+"WRONG_FORMAT" = "Қате формат";
+"NO_ACC" = "Аккаунтыныз жоқ па?";
+"REGISTER" = "Тіркелу";

@@ -84,6 +84,17 @@ class SignInViewController: UIViewController {
         return textField
     }()
     
+    let wrongLabel: UILabel = {
+        let label = UILabel()
+        
+        label.text = "WRONG_FORMAT".localized()
+        label.font = UIFont(name: "SFProDisplay-Regular", size: 14)
+        label.isHidden = true
+        label.textAlignment = .left
+        
+        return label
+    }()
+    
     private let emailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(resource: .message)
@@ -112,10 +123,34 @@ class SignInViewController: UIViewController {
         
         button.backgroundColor = UIColor(resource: .primary)
         button.layer.cornerRadius = 12
-        button.tintColor = UIColor(.white)
+        button.setTitleColor(UIColor(.white), for: .normal)
         button.setTitle("Кіру", for: .normal)
-        button.titleLabel?.font = UIFont(name: "SFProDisplay", size: <#T##CGFloat#>)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 16)
         
+        return button
+    }()
+    
+    private let noAccLabel: UILabel = {
+        let label = UILabel()
+        
+        label.text = "NO_ACC".localized()
+        label.font = UIFont(name: "SFProDisplay-Regular", size: 14)
+        label.textColor = UIColor(resource: .noAcc)
+        label.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
+        
+        return label
+    }()
+    
+    private let registerButton: UIButton = {
+        let button = UIButton(type: .custom)
+        
+        button.layer.borderWidth = 0
+        button.backgroundColor = .none
+        button.setTitleColor(UIColor(resource: .primary300), for: .normal)
+        button.setTitle("REGISTER".localized(), for: .normal)
+        button.titleLabel?.font = UIFont(name: "SFProDisplay-Regular", size: 14)
+        
+        button.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
         return button
     }()
     
@@ -186,12 +221,21 @@ class SignInViewController: UIViewController {
             make.leading.equalTo(emailTextField.snp.leading).inset(16)
         }
         
+        //Wrong Format
+        view.addSubview(wrongLabel)
+        
+        wrongLabel.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).inset(0)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(24)
+            make.height.equalTo(0)
+        }
+        
         //Password
         view.addSubview(passLabel)
         
         passLabel.textAlignment = .left
         passLabel.snp.makeConstraints { make in
-            make.top.equalTo(emailTextField.snp.bottom).inset(dynamicValue(for: -13))
+            make.top.equalTo(wrongLabel.snp.bottom).inset(-16)
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(24)
             make.height.equalTo(dynamicValue(for: 21))
         }
@@ -219,16 +263,43 @@ class SignInViewController: UIViewController {
             make.trailing.equalTo(passTextField.snp.trailing).inset(16)
         }
         
+        //Log In button
         view.addSubview(logInButton)
         
         logInButton.snp.makeConstraints { make in
             make.height.equalTo(dynamicValue(for: 56))
             make.top.equalTo(passTextField.snp.bottom).inset(dynamicValue(for: -79))
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(24)
-            
+        }
+        
+        //NoAcc
+        let miniView = UIView()
+        
+        miniView.addSubview(noAccLabel)
+        miniView.addSubview(registerButton)
+        
+        noAccLabel.snp.makeConstraints { make in
+            make.trailing.equalTo(registerButton.snp.leading).inset(-2)
+            make.leading.equalTo(miniView.snp.leading)
+            make.centerY.equalTo(miniView)
+            make.height.equalTo(22)
+        }
+        
+        registerButton.snp.makeConstraints { make in
+            make.trailing.equalTo(miniView.snp.trailing)
+            make.centerY.equalTo(miniView)
+            make.height.equalTo(22)
+        }
+        
+        view.addSubview(miniView)
+        miniView.snp.makeConstraints { make in
+            make.centerX.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(logInButton.snp.bottom).inset(-24)
+            make.height.equalTo(22)
         }
     }
     
+    //func to hide keyboard
     private func hideKeyboardWhenTappedAround(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -264,7 +335,7 @@ private extension SignInViewController{
 
 
 //TextFieldWithPadding
-extension SignInViewController{
+extension SignInViewController: UITextFieldDelegate{
     class TextFieldWithPadding: UITextField{
         let padding = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 16)
         
@@ -306,5 +377,10 @@ extension SignInViewController{
             return result
         }
     }
+//    if !(self.text?.hasSuffix("@gmail.com") ?? false) && self.textContentType == .emailAddress{
+//        self.layer.borderColor = UIColor(resource: .error).cgColor
+//    } else{
+//        self.layer.borderColor = UIColor(resource: .border).cgColor
+//    }
 }
 
