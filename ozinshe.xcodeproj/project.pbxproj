@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA064C5C2CD2D03700F28B9E /* URLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA064C5B2CD2D03700F28B9E /* URLs.swift */; };
+		BA064C5E2CD394E000F28B9E /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA064C5D2CD394D500F28B9E /* Storage.swift */; };
+		BA064C602CD3A95B00F28B9E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA064C5F2CD3A95B00F28B9E /* TabBarViewController.swift */; };
+		BA34B5E32CDAAA590012B444 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA34B5E22CDAAA590012B444 /* SignUpViewController.swift */; };
 		BA95EE2A2CC7D5AE0006DB3B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA95EE292CC7D5AE0006DB3B /* SnapKit */; };
 		BA9F122E2CC1785200BEF090 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = BA9F122D2CC1785200BEF090 /* SwiftyJSON */; };
 		BA9F12312CC1791000BEF090 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = BA9F12302CC1791000BEF090 /* SDWebImage */; };
@@ -30,6 +34,10 @@
 
 /* Begin PBXFileReference section */
 		BA064C5A2CD2BC4900F28B9E /* kk-KZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "kk-KZ"; path = "kk-KZ.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		BA064C5B2CD2D03700F28B9E /* URLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLs.swift; sourceTree = "<group>"; };
+		BA064C5D2CD394D500F28B9E /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		BA064C5F2CD3A95B00F28B9E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		BA34B5E22CDAAA590012B444 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = ozinshe/Controllers/SignUpViewController.swift; sourceTree = SOURCE_ROOT; };
 		BA9F120C2CC1748700BEF090 /* ozinshe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ozinshe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAAB902F2CC988B300E9535F /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		BAAB90302CC988B300E9535F /* SlidesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -88,6 +96,8 @@
 			children = (
 				BAAB904B2CC988C800E9535F /* OnBoarding */,
 				BAAB904C2CC988F400E9535F /* SignInViewController.swift */,
+				BA34B5E22CDAAA590012B444 /* SignUpViewController.swift */,
+				BA064C5F2CD3A95B00F28B9E /* TabBarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -148,6 +158,7 @@
 		BACD4FAE2CD0F1F7007D3315 /* Static */ = {
 			isa = PBXGroup;
 			children = (
+				BA064C5B2CD2D03700F28B9E /* URLs.swift */,
 			);
 			path = Static;
 			sourceTree = "<group>";
@@ -155,6 +166,7 @@
 		BACD4FAF2CD0F1FF007D3315 /* SharedInstance */ = {
 			isa = PBXGroup;
 			children = (
+				BA064C5D2CD394D500F28B9E /* Storage.swift */,
 			);
 			path = SharedInstance;
 			sourceTree = "<group>";
@@ -254,9 +266,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA064C602CD3A95B00F28B9E /* TabBarViewController.swift in Sources */,
 				BAAB90472CC988B300E9535F /* OnBoardingViewController.swift in Sources */,
+				BA064C5E2CD394E000F28B9E /* Storage.swift in Sources */,
+				BA064C5C2CD2D03700F28B9E /* URLs.swift in Sources */,
 				BAAB90482CC988B300E9535F /* SlidesCollectionViewCell.swift in Sources */,
 				BAAB90492CC988B300E9535F /* AppDelegate.swift in Sources */,
+				BA34B5E32CDAAA590012B444 /* SignUpViewController.swift in Sources */,
 				BAAB904D2CC988F400E9535F /* SignInViewController.swift in Sources */,
 				BAAB904A2CC988B300E9535F /* SceneDelegate.swift in Sources */,
 			);

@@ -1,8 +1,8 @@
 //
-//  SignInViewController.swift
+//  SignUpViewController.swift
 //  ozinshe
 //
-//  Created by Nuradil Serik on 24.10.2024.
+//  Created by Nuradil Serik on 06.11.2024.
 //
 
 import UIKit
@@ -11,14 +11,13 @@ import SVProgressHUD
 import Alamofire
 import SwiftyJSON
 
-class SignInViewController: UIViewController {
-
-    //MARK: - Private properties
+class SignUpViewController: UIViewController {
     
+    //MARK: - Private properties
     let helloLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "HELLO".localized()
+        label.text = "REGISTER".localized()
         label.font = UIFont(name: "SFProDisplay-Bold", size: 24)
         label.textColor = UIColor(resource: .title)
         
@@ -28,7 +27,7 @@ class SignInViewController: UIViewController {
     private let signInLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Аккаунтқа кіріңіз"
+        label.text = "FILL_DATA".localized()
         label.font = UIFont(name: "SFProDisplay-Regular", size: 16)
         label.textColor = UIColor(resource: .description)
         
@@ -48,7 +47,17 @@ class SignInViewController: UIViewController {
     private let passLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "Құпия сөз"
+        label.text = "PASS".localized()
+        label.font = UIFont(name: "SFProDisplay-Bold", size: 14)
+        label.textColor = UIColor(resource: .title)
+        
+        return label
+    }()
+    
+    private let passRepeatLabel: UILabel = {
+        let label = UILabel()
+        
+        label.text = "PASS_REPEAT".localized()
         label.font = UIFont(name: "SFProDisplay-Bold", size: 14)
         label.textColor = UIColor(resource: .title)
         
@@ -90,6 +99,30 @@ class SignInViewController: UIViewController {
         return textField
     }()
     
+    
+    private let passRepeatTextField: UITextField = {
+        let textField = TextFieldWithPadding()
+        
+        textField.borderStyle = .none
+        textField.font = UIFont(name: "SFProDisplay-Semibold", size: 16)
+        textField.layer.cornerRadius = 12
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor(resource: .border).cgColor
+        textField.textContentType = .password
+        textField.placeholder = "YOUR_PASS".localized()
+        textField.configurePlaceHolder()
+        
+        
+        textField.isSecureTextEntry = true
+        return textField
+    }()
+    
+    private let emailImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(resource: .message)
+        return imageView
+    }()
+    
     let wrongLabel: UILabel = {
         let label = UILabel()
         
@@ -102,13 +135,15 @@ class SignInViewController: UIViewController {
         return label
     }()
     
-    private let emailImageView: UIImageView = {
+    private let passImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(resource: .message)
+        
+        imageView.image = UIImage(resource: .password)
+        
         return imageView
     }()
     
-    private let passImageView: UIImageView = {
+    private let passRepeatImageView: UIImageView = {
         let imageView = UIImageView()
         
         imageView.image = UIImage(resource: .password)
@@ -125,21 +160,30 @@ class SignInViewController: UIViewController {
         return button
     }()
     
-    private let logInButton: UIButton = {
+    private let showRepeatButton: UIButton = {
+        let button = UIButton()
+        
+        button.setImage(UIImage(resource: .show), for: .normal)
+        button.addTarget(self, action: #selector(showRepeatPass), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private let signUpButton: UIButton = {
         let button = UIButton(type: .custom)
         
         button.backgroundColor = UIColor(resource: .primary)
         button.layer.cornerRadius = 12
         button.setTitleColor(UIColor(.white), for: .normal)
-        button.setTitle("LOG_IN".localized(), for: .normal)
+        button.setTitle("REGISTER".localized(), for: .normal)
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Semibold", size: 16)
         
-        button.addTarget(self, action: #selector(signIn), for: .touchUpInside)
+        button.addTarget(self, action: #selector(signUp), for: .touchUpInside)
         
         return button
     }()
     
-    private let noAccLabel: UILabel = {
+    private let haveAccLabel: UILabel = {
         let label = UILabel()
         
         label.text = "NO_ACC".localized()
@@ -150,30 +194,28 @@ class SignInViewController: UIViewController {
         return label
     }()
     
-    private let registerButton: UIButton = {
+    private let logInButton: UIButton = {
         let button = UIButton(type: .custom)
         
         button.layer.borderWidth = 0
         button.backgroundColor = .none
         button.setTitleColor(UIColor(resource: .primary300), for: .normal)
-        button.setTitle("REGISTER".localized(), for: .normal)
+        button.setTitle("LOG_IN".localized(), for: .normal)
         button.titleLabel?.font = UIFont(name: "SFProDisplay-Regular", size: 14)
         
-        button.addTarget(self, action: #selector(goToSignUp), for: .touchUpInside)
+        button.addTarget(self, action: #selector(goBack), for: .touchUpInside)
         
         button.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
         return button
     }()
     
-    //lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         initialize()
         configureViews()
         hideKeyboardWhenTappedAround()
     }
-    
     
     func initialize(){
         view.backgroundColor = .BG
@@ -183,7 +225,6 @@ class SignInViewController: UIViewController {
         
         self.navigationItem.leftBarButtonItem = backButton
     }
-    
     
     func configureViews(){
         //helloLabel
@@ -274,29 +315,60 @@ class SignInViewController: UIViewController {
             make.trailing.equalTo(passTextField.snp.trailing).inset(16)
         }
         
-        //Log In button
-        view.addSubview(logInButton)
+        //repeatPassword
+        view.addSubview(passRepeatLabel)
         
-        logInButton.snp.makeConstraints { make in
-            make.height.equalTo(dynamicValue(for: 56))
-            make.top.equalTo(passTextField.snp.bottom).inset(dynamicValue(for: -79))
+        passRepeatLabel.textAlignment = .left
+        passRepeatLabel.snp.makeConstraints { make in
+            make.top.equalTo(passTextField.snp.bottom).inset(-16)
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(24)
+            make.height.equalTo(dynamicValue(for: 21))
         }
         
-        //NoAcc
+        view.addSubview(passRepeatTextField)
+        
+        passRepeatTextField.snp.makeConstraints { make in
+            make.top.equalTo(passRepeatLabel.snp.bottom).inset(-4)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(dynamicValue(for: 24))
+            make.height.equalTo(dynamicValue(for: 56))
+        }
+        
+        view.addSubview(passRepeatImageView)
+        
+        passRepeatImageView.snp.makeConstraints { make in
+            make.height.width.equalTo(20)
+            make.centerY.equalTo(passRepeatTextField)
+            make.leading.equalTo(passRepeatTextField.snp.leading).inset(16)
+        }
+        
+        view.addSubview(showRepeatButton)
+        
+        showRepeatButton.snp.makeConstraints { make in
+            make.top.bottom.equalTo(passRepeatTextField)
+            make.trailing.equalTo(passRepeatTextField.snp.trailing).inset(16)
+        }
+        
+        view.addSubview(signUpButton)
+        
+        signUpButton.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(24)
+            make.height.equalTo(56)
+            make.top.equalTo(passRepeatTextField.snp.bottom).inset(-40)
+        }
+        
+        //GoSignIn
         let miniView = UIView()
+        miniView.addSubview(haveAccLabel)
+        miniView.addSubview(logInButton)
         
-        miniView.addSubview(noAccLabel)
-        miniView.addSubview(registerButton)
-        
-        noAccLabel.snp.makeConstraints { make in
-            make.trailing.equalTo(registerButton.snp.leading).inset(-2)
+        haveAccLabel.snp.makeConstraints { make in
+            make.trailing.equalTo(logInButton.snp.leading).inset(-2)
             make.leading.equalTo(miniView.snp.leading)
             make.centerY.equalTo(miniView)
             make.height.equalTo(22)
         }
         
-        registerButton.snp.makeConstraints { make in
+        logInButton.snp.makeConstraints { make in
             make.trailing.equalTo(miniView.snp.trailing)
             make.centerY.equalTo(miniView)
             make.height.equalTo(22)
@@ -305,17 +377,21 @@ class SignInViewController: UIViewController {
         view.addSubview(miniView)
         miniView.snp.makeConstraints { make in
             make.centerX.equalTo(view.safeAreaLayoutGuide)
-            make.top.equalTo(logInButton.snp.bottom).inset(-24)
+            make.top.equalTo(signUpButton.snp.bottom).inset(-24)
             make.height.equalTo(22)
         }
     }
     
-    @objc func signIn(){
-        let email = emailTextField.text ?? " "
-        let password = passTextField.text ?? " "
+    @objc func signUp(){
+        let pass = passTextField.text ?? ""
+        let passRepeat = passRepeatTextField.text ?? ""
+        let email = emailTextField.text ?? ""
         
-        if email == " " || password == " "{
+        if email == "" || pass == "" || passRepeat == ""{
             SVProgressHUD.showError(withStatus: "EMPTY_LOGIN_OR_PASS".localized())
+            SVProgressHUD.dismiss(withDelay: 1.5)
+        } else if pass != passRepeat{
+            SVProgressHUD.showError(withStatus: "DIFF_PASS".localized())
             SVProgressHUD.dismiss(withDelay: 1.5)
         } else if !(email.hasSuffix("@gmail.com") || email.hasSuffix("@mail.com")) {
             emailTextField.layer.borderColor = UIColor(resource: .error).cgColor
@@ -330,42 +406,32 @@ class SignInViewController: UIViewController {
             
             let parameters = [
                 "email": email,
-                "password": password
+                "password": pass
             ]
             
-            AF.request(URLs.SIGN_IN_URL, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseData { response in
+            AF.request(URLs.SIGN_UP_URL, parameters: parameters, encoding: JSONEncoding.default).responseData { response in
                 SVProgressHUD.dismiss()
-                var resultString = ""
                 
                 if let data = response.data{
-                    resultString = String(data: data, encoding: .utf8)!
+                    let resultString = String(data: data, encoding: .utf8)!
                     print(resultString)
                 }
                 
                 if response.response?.statusCode == 200{
                     let json = JSON(response.data!)
-                    print("JSON: \(json)")
+                    print(json)
                     
                     if let token = json["accessToken"].string{
                         Storage.sharedInstance.accessToken = token
                         UserDefaults.standard.set(token, forKey: "accessToken")
                         self.startApp()
-                    } else{
-                        SVProgressHUD.showError(withStatus: "CONNECTION_ERROR".localized())
                     }
-                } else{
-                    var ErrorString = "CONNECTION_ERROR".localized()
-                    if let sCode = response.response?.statusCode{
-                        ErrorString += " \(sCode)"
-                    }
-                    ErrorString += " \(resultString)"
-                    SVProgressHUD.showError(withStatus: "\(ErrorString)")
                 }
             }
         }
-        
     }
     
+    //startUp
     func startApp(){
         let tabVC = TabBarViewController()
         tabVC.modalPresentationStyle = .fullScreen
@@ -384,11 +450,15 @@ class SignInViewController: UIViewController {
     }
     
     @objc func goBack(){
-        _ = navigationController?.popToRootViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     @objc func showPass(){
         passTextField.isSecureTextEntry.toggle()
+    }
+    
+    @objc func showRepeatPass(){
+        passRepeatTextField.isSecureTextEntry.toggle()
     }
     
     @objc func hideWrongLabel(){
@@ -397,17 +467,12 @@ class SignInViewController: UIViewController {
             make.top.equalTo(emailTextField.snp.bottom).inset(0)
         }
     }
-    
-    @objc func goToSignUp(){
-        let signUpVC = SignUpViewController()
-        navigationController?.show(signUpVC, sender: self)
-    }
 }
 
 
 //MARK: - Private extensions
 //dynamicValue
-private extension SignInViewController{
+private extension SignUpViewController{
     func dynamicValue(for size: CGFloat) -> CGFloat {
         let screenSize = UIScreen.main.bounds.size
         let baseScreenSize = CGSize(width: 375, height: 812)
@@ -419,7 +484,7 @@ private extension SignInViewController{
 
 
 //TextFieldWithPadding
-extension SignInViewController: UITextFieldDelegate{
+extension SignUpViewController: UITextFieldDelegate{
     class TextFieldWithPadding: UITextField{
         let padding = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 16)
         
@@ -461,10 +526,4 @@ extension SignInViewController: UITextFieldDelegate{
             return result
         }
     }
-//    if !(self.text?.hasSuffix("@gmail.com") ?? false) && self.textContentType == .emailAddress{
-//        self.layer.borderColor = UIColor(resource: .error).cgColor
-//    } else{
-//        self.layer.borderColor = UIColor(resource: .border).cgColor
-//    }
 }
-

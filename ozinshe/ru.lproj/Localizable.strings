@@ -9,5 +9,14 @@
 
 "WRONG_FORMAT" = "Неверный формат";
 "NO_ACC" = "Нет аккаунта?";
+"LOG_IN" = "Войти";
 "REGISTER" = "Регистрация";
+"EMPTY_LOGIN_OR_PASS" = "Введите email и пароль!";
+"CONNECTION_ERROR" = "Ошибка соединения!";
+"FILL_DATA" = "Заполните данные";
+"PASS_REPEAT" = "Повторите пароль";
+"PASS" = "Пароль";
+"YOUR_EMAIL" = "Ваш email";
+"YOUR_PASS" = "Ваш пароль";
+"DIFF_PASS" = "Пароли не соответствуют!";
 
