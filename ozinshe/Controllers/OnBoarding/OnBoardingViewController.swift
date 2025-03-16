@@ -6,68 +6,115 @@
 //
 
 import UIKit
+import SnapKit
 
-class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-    //MARK: - Private properties
-    private var collectionView: UICollectionView!
+class OnboardingViewController: UIViewController {
     
-    private let slidesArray: [[String]] = [
-        ["firstSlide", "ÖZINŞE-ге қош келдің!", "Фильмдер, телехикаялар, ситкомдар,\n анимациялық жобалар, телебағдарламалар\n мен реалити-шоулар, аниме және тағы\n басқалары"],
-        ["secondSlide", "ÖZINŞE-ге қош келдің!", "Кез келген құрылғыдан қара\n          Сүйікті фильміңді  қосымша төлемсіз\n телефоннан, планшеттен, ноутбуктан қара"],
-        ["thirdSlide", "ÖZINŞE-ге қош келдің!", "Тіркелу оңай. Қазір тіркел де қалаған\n фильміңе қол жеткіз"]
-    ]
+    var arraySlides = [["firstSlide", "ÖZINŞE-ге қош келдің!", "Фильмдер, телехикаялар, ситкомдар, анимациялық жобалар, телебағдарламалар мен реалити-шоулар, аниме және тағы басқалары"], ["secondSlide", "ÖZINŞE-ге қош келдің!", "Кез келген құрылғыдан қара. Сүйікті фильміңді  қосымша төлемсіз телефоннан, планшеттен, ноутбуктан қара"], ["thirdSlide", "ÖZINŞE-ге қош келдің!", "Тіркелу оңай. Қазір тіркел де қалаған фильміңе қол жеткіз"]]
     
-    private var currentPage = 0 {
-        didSet{
-            updatePageControlUI(currentPageIndex: currentPage)
+    var currentPage = 0 {
+        didSet {
             pageControl.currentPage = currentPage
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        initialize()
-    }
+    let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(OnboardingCell.self, forCellWithReuseIdentifier: "OnboardingCell")
+        collectionView.backgroundColor = UIColor(named: "FFFFFF - 111827")
+        collectionView.contentInsetAdjustmentBehavior = .never
+        collectionView.isPagingEnabled = true
+        collectionView.isScrollEnabled = true
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        
+        return collectionView
+    }()
+    
+    let pageControl = {
+        let pc = UIPageControl()
+        pc.numberOfPages = 3
+        pc.tintColor = .black
+        pc.currentPage = 0
+        pc.currentPageIndicatorTintColor = UIColor(red: 0.7, green: 0.46, blue: 0.97, alpha: 1)
+        pc.contentVerticalAlignment = .center
+        pc.contentHorizontalAlignment = .center
+        
+        return pc
+    }()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    
+   
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationItem.title = ""
     }
     
-   
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupUI()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
     
+    @objc func nextButtonTouched() {
+        let signInViewController = SignInViewController()
+        navigationController?.show(signInViewController, sender: self)
+    }
     
-    //CollectionView
+    func setupUI() {
+        view.backgroundColor = UIColor(named: "FFFFFF - 111827")
+        
+        view.addSubview(collectionView)
+        view.addSubview(pageControl)
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.left.right.bottom.equalToSuperview()
+        }
+        
+        pageControl.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(654)
+            make.centerX.equalToSuperview()
+        }
+    }
+}
+
+extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return slidesArray.count
+        return arraySlides.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "slidesCell", for: indexPath) as! SlidesCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCell", for: indexPath) as! OnboardingCell
         
-        cell.configure(
-            image: UIImage(named: slidesArray[indexPath.row][0])!,
-            titleText: slidesArray[indexPath.row][1],
-            descriptionText: slidesArray[indexPath.row][2]
-        )
+        cell.imageO.image = UIImage(named: arraySlides[indexPath.row][0])
         
-        if indexPath.row != 2{
-            cell.skipButton.isHidden = false
-            cell.nextButton.isHidden = true
-        } else{
+        cell.welcomeLabel.text = arraySlides[indexPath.row][1]
+        
+        cell.fullInfoLabel.text = arraySlides[indexPath.row][2]
+        
+        cell.skipButton.layer.cornerRadius = 8
+        if indexPath.row == 2 {
             cell.skipButton.isHidden = true
-            cell.nextButton.isHidden = false
+        }
+        cell.skipButton.addTarget(self, action: #selector(nextButtonTouched), for: .touchUpInside)
+        
+        cell.nextButton.layer.cornerRadius = 12
+        if indexPath.row != 2 {
+            cell.nextButton.isHidden = true
         }
         
-        cell.skipButton.addTarget(self, action: #selector(goToSingIn), for: .touchUpInside)
-        
-        cell.nextButton.addTarget(self, action: #selector(goToSingIn), for: .touchUpInside)
+        cell.nextButton.addTarget(self, action: #selector(nextButtonTouched), for: .touchUpInside)
         
         return cell
     }
@@ -77,93 +124,11 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
     }
-    
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let width = scrollView.frame.width
-        currentPage = Int(scrollView.contentOffset.x / width)
-    }
-    
-    private var pageControl: UIPageControl = {
-        let pageControl = UIPageControl()
-        
-        pageControl.pageIndicatorTintColor = UIColor(.pageControl)
-        pageControl.currentPageIndicatorTintColor = UIColor(.currentPageControl)
-        
-        pageControl.currentPage = 0
-        pageControl.numberOfPages = 3
-        
-        pageControl.setIndicatorImage(.pageRectangle, forPage: pageControl.currentPage)
-        
-        return pageControl
-    }()
-    
-    func updatePageControlUI(currentPageIndex: Int) {
-        UIView.animate(withDuration: 0.2) {
-            (0..<self.pageControl.numberOfPages).forEach { (index) in
-                let activePageIconImage = UIImage(resource: .pageRectangle)
-                let otherPageIconImage = UIImage(resource: .dot)
-                let pageIcon = index == currentPageIndex ? activePageIconImage : otherPageIconImage
-                
-                //animation
-                UIView.transition(with: self.pageControl, duration: 0.3, options: .transitionCrossDissolve, animations: {
-                    self.pageControl.setIndicatorImage(pageIcon, forPage: index)
-                }, completion: nil)
-            }
-        }
-    }
-    
-    private func initialize(){
-        view.backgroundColor = .BG
-        //CollectionView
-        let collectionViewLayout = UICollectionViewFlowLayout()
-        collectionViewLayout.minimumInteritemSpacing = 0
-        collectionViewLayout.minimumLineSpacing = 0
-        
-        collectionViewLayout.scrollDirection = .horizontal
-        
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        
-        collectionView.contentInsetAdjustmentBehavior = .never
-
-        view.addSubview(collectionView)
-        collectionView.isPagingEnabled = true
-        collectionView.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide)
-        }
-        
-        collectionView.register(SlidesCollectionViewCell.self, forCellWithReuseIdentifier: "slidesCell")
-        
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        
-        collectionView.showsHorizontalScrollIndicator = false
-        
-        view.addSubview(pageControl)
-        pageControl.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(dynamicValue(for: 118))
-        }
-    }
-    
-    @objc func goToSingIn(){
-        let signInVC = SignInViewController()
-        navigationController?.show(signInVC, sender: self)
-    }
-    
-    
-}
-
-//MARK: - Private extensions
-private extension OnBoardingViewController{
-    func dynamicValue(for size: CGFloat) -> CGFloat {
-        let screenSize = UIScreen.main.bounds.size
-        let baseScreenSize = CGSize(width: 375, height: 812)
-        let scaleFactor = min(screenSize.width, screenSize.height) / min(baseScreenSize.width, baseScreenSize.height)
-        
-        return size * scaleFactor
+        let pageIndex = round(scrollView.contentOffset.x / view.frame.width)
+        pageControl.currentPage = Int(pageIndex)
     }
 }

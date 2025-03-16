@@ -5,18 +5,50 @@
   Created by Nuradil Serik on 30.10.2024.
   
 */
-"HELLO" = "Привет";
-
-"WRONG_FORMAT" = "Неверный формат";
-"NO_ACC" = "Нет аккаунта?";
-"LOG_IN" = "Войти";
-"REGISTER" = "Регистрация";
-"EMPTY_LOGIN_OR_PASS" = "Введите email и пароль!";
-"CONNECTION_ERROR" = "Ошибка соединения!";
-"FILL_DATA" = "Заполните данные";
-"PASS_REPEAT" = "Повторите пароль";
-"PASS" = "Пароль";
-"YOUR_EMAIL" = "Ваш email";
-"YOUR_PASS" = "Ваш пароль";
-"DIFF_PASS" = "Пароли не соответствуют!";
-
+"MY_PROFILE" = "Мой профиль";
+"LANGUAGE" = "Язык";
+"USER_INFO_NAME_LABEL" = "Ваше имя";
+"USER_INFO_NAME_TEXT_FIELD" = "Введите имя";
+"US_INFO_PHONE_LABEL" = "Телефон";
+"US_INFO_BIRTH_LABEL" = "Дата рождения";
+"US_INFO_SAVE_BUTTON" = "Сохранить изменения";
+"USER_INFO_BUTTON" = "Личные данные";
+"USER_INFO_EDIT_LABEL" = "Изменить";
+"CHANGE_PASSWORD_BUTTON" = "Поменять пароль";
+"DARK_MODE_LABEL" = "Темный режим";
+"PROFILE_TITLE" = "Профиль";
+"USER_INFO_NAVIGATION" = "Личные данные";
+"USER_PASSWORD_CHANGE" = "Ваш пароль";
+"CHANGE_PASSWORD_LABEL" = "Пароль";
+"REPEAT_PASSWORD_LABEL" = "Повторите пароль";
+"CHANGE_PASSWORD_NAVIGATION" = "Новый пароль";
+"LOG_OUT_LABEL" = "Выход";
+"LOG_OUT_QUES_LABEL" = "Вы хотите выйти?";
+"LOG_OUT_BUTTON" = "Да,выйти";
+"NO_LOG_OUT_BUTTON" = "Нет";
+"CONTINUE_WATCH_LABEL" = "Продолжить просмотр";
+"TOTAL_VIDEO_LABEL" = "Показать все";
+"CHOOSE_GENRE_LABEL" = "Выбрать жанр";
+"SHARE_LABEL" = "Поделиться";
+"ADD_TO_FAVORITE" = "Добавить";
+"FULL_DESCRIPTION_BUTTON" = "Показать полностью";
+"DIRECTOR_LABEL" = "Режиссер";
+"PRODUCER_LABEL" = "Продюсер";
+"SERIES_LABEL" = "Серии";
+"SCREENSHOT_LABEL" = "Скриншоты";
+"SIMILAR_MOVIES_LABEL" = "Похожие фильмы";
+"SEARCH_NAVIGATION" = "Поиск";
+"CATEGORIES_SEARCH" = "Категории";
+"SEARCH_PLACEHOLDER" = "Поиск";
+"FAVORITE_NAVIGATION" = "Cписок";
+"SIGN_UP_LABEL" = "Регистрация";
+"DETAIL_INFORM_LABEL" = "Заполните данные";
+"SIGN_UP_EMAIL" = "Ваш Email";
+"CHANGE_PASSWORD_LABEL" = "Пароль";
+"REPEAT_PASSWORD_LABEL" = "Повторите пароль";
+"SIGN_UP_QUESTION_LABEL" = "У вас есть аккаунт?";
+"SIGN_UP_BUTTON" = "Cоздать";
+"SIGN_IN_BUTTON_UP" = "Войти";
+"HELLO_LABEL" = "Здравствуйте";
+"DETAIL_SIGN_IN" = "Войдите в аккаунт";
+"SIGN_IN_QUESTION" = "У вас нет аккаунта?";

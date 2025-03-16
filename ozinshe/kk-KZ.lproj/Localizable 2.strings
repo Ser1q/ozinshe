@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  ozinshe
+
+  Created by Nuradil Serik on 30.10.2024.
+  
+*/
+"HELLO" = "Сәлем";
+
+"WRONG_FORMAT" = "Қате формат";
+"NO_ACC" = "Аккаунтыныз жоқ па?";
+"LOG_IN" = "Кіру";
+"REGISTER" = "Тіркелу";
+"EMPTY_LOGIN_OR_PASS" = "Email және құпия сөзді еңгізіңіз!";
+"CONNECTION_ERROR" = "Қосылым қатесі!";
+"FILL_DATA" = "Деректерді толтырыңыз";
+"PASS_REPEAT" = "Құпия сөзді қайталаңыз";
+"PASS" = "Құпия сөз";
+"YOUR_EMAIL" = "Сіздің email";
+"YOUR_PASS" = "Сіздің құпия сөзіңіз";
+"DIFF_PASS" = "Құпия сөздер өзара сәйкес келмейді!";

@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  ozinshe
+
+  Created by Nuradil Serik on 30.10.2024.
+  
+*/
+"HELLO" = "Hello";
+
+"WRONG_FORMAT" = "Wrong format";
+"NO_ACC" = "No account?";
+"LOG_IN" = "Log in";
+"REGISTER" = "Register";
+"EMPTY_LOGIN_OR_PASS" = "Enter email and password!";
+"CONNECTION_ERROR" = "Connection error!";
+"FILL_DATA" = "Fill in the information";
+"PASS_REPEAT" = "Repeat password";
+"PASS" = "Password";
+"YOUR_EMAIL" = "Your email";
+"YOUR_PASS" = "Your password";
+"DIFF_PASS" = "Passwords do not match!";
